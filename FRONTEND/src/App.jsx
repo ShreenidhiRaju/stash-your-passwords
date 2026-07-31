@@ -86,16 +86,18 @@ function App() {
     <Navbar/>
     <Bgbody/>
     <ToastContainer />
-    <div className='w-3/5 mx-auto mt-10'>
+    <div className='w-[95%] sm:w-[90%] md:w-4/5 lg:w-3/5 mx-auto mt-10 px-2'>
       <div className='text-[#5738aa] font-extrabold text-center'>STASH YOUR PASSWORDS HERE . </div>
       <input type="text" name="site" onChange={handlechange} value={form.site} placeholder='Enter the website URL' className='bg-black text-gray-400 border border-gray-400 mt-5 w-full rounded-3xl h-12 px-5' />
-      <div className="userandpass flex gap-1.5 relative">
+      <div className="flex flex-col md:flex-row gap-1.5 relative">
         <input type="text" name="username" onChange={handlechange} value={form.username} placeholder='Enter Username' className='bg-black text-gray-400 border border-gray-400 mt-5 w-full rounded-3xl h-12 px-5' />
-
-        <input ref={passwordref} type="password" name="password" onChange={handlechange} value={form.password} placeholder='Enter password' className='bg-black text-gray-400 border border-gray-400 mt-5 w-full rounded-3xl h-12 px-5' />
+        <div className="relative w-full">
+          <input ref={passwordref} type="password" name="password" onChange={handlechange} value={form.password} placeholder='Enter password' className='bg-black text-gray-400 border border-gray-400 mt-5 w-full rounded-3xl h-12 px-5' />
         
         {showpassword ? <EyeOff
-    className='absolute right-3 -bottom-2.5 -translate-y-1/2 text-gray-400 cursor-pointer' onClick={toggleye}/> : <Eye className='absolute right-3 -bottom-0.5 -translate-y-1/2 text-gray-400 cursor-pointer' onClick={toggleye} />}
+    className='absolute right-4 -bottom-0.5 -translate-y-1/2 text-gray-400 cursor-pointer' onClick={toggleye}/> : <Eye className='absolute right-4 -bottom-0.5 -translate-y-1/2 text-gray-400 cursor-pointer' onClick={toggleye} />}
+        </div>
+        
        
       </div>
       <div className='save text-center mt-5'>
@@ -104,8 +106,8 @@ function App() {
       <div className='display mt-6'>
         <div className='text-[#5738aa] font-extrabold mb-2'>YOUR PASSWORDS</div>
         {passwordarray.length==0?<div className=' text-gray-400 mt-2'>No passwords to show</div>:
-          (<div className="wrap rounded-2xl overflow-hidden border border-gray-400">
-          <table className='text-center w-full border-collapse'>
+          (<div className="overflow-x-auto rounded-2xl border border-gray-400">
+          <table className="min-w-[650px] w-full text-center border-collapse">
             <thead>
               <tr className='text-[#5738aa]'>
             <th>SITE</th>
