@@ -7,6 +7,7 @@ import { Eye, EyeOff } from "lucide-react";
 import { v4 as uuidv4 } from 'uuid';
 import { MdEdit,MdDelete, MdContentCopy} from "react-icons/md";
 
+
 function App() {
   const[showpassword,setshowpassword]=useState(false)
   const [form, setform] = useState({site:"",username:"",password:""})
@@ -26,7 +27,7 @@ function App() {
     
 
   const getPassswords=async() => { 
-     let resp=await fetch("http://localhost:3000/")
+     let resp=await fetch(`${import.meta.env.VITE_API_URL}/`)
      let passwords=await resp.json()
      console.log(passwords)
      setpasswordarray(passwords)
@@ -44,14 +45,14 @@ function App() {
   }
 
   if(form.id){
-    let resp=await fetch("http://localhost:3000/",{method:"PUT",headers:{"Content-Type":"application/json"}, body:JSON.stringify(form)})
+    let resp=await fetch(`${import.meta.env.VITE_API_URL}/`,{method:"PUT",headers:{"Content-Type":"application/json"}, body:JSON.stringify(form)})
     await getPassswords(); 
     toast("Password updated !")
   }
   else{
     const newpass={...form, id:uuidv4()}
     setpasswordarray([...passwordarray,newpass])
-    let resp=await fetch("http://localhost:3000/",{method:"POST",headers:{"Content-Type":"application/json"}, body:JSON.stringify(newpass)})
+    let resp=await fetch(`${import.meta.env.VITE_API_URL}/`,{method:"POST",headers:{"Content-Type":"application/json"}, body:JSON.stringify(newpass)})
     toast("Password saved !")
   }
   setform({site:"",username:"",password:""})
@@ -61,7 +62,7 @@ function App() {
     let c=confirm("Do you really want to delete the password?")
     if(c){
       setpasswordarray(passwordarray.filter(item=>item.id!==id))
-      let resp=await fetch("http://localhost:3000/",{method:"DELETE",headers:{"Content-Type":"application/json"}, body:JSON.stringify({id})})
+      let resp=await fetch(`${import.meta.env.VITE_API_URL}/`,{method:"DELETE",headers:{"Content-Type":"application/json"}, body:JSON.stringify({id})})
       toast("Password deleted !")
     }
   }

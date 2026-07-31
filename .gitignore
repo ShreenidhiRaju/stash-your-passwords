@@ -1,19 +1,17 @@
-# Node modules
+# Dependencies
 BACKEND/node_modules/
 FRONTEND/node_modules/
 
 # Environment files
 BACKEND/.env
+FRONTEND/.env
+
+# Build output
+FRONTEND/dist/
 
 # Logs
 *.log
 
-# Vite build
-FRONTEND/dist/
-
 # OS files
 .DS_Store
 Thumbs.db
-
-# VS Code settings (optional)
-.vscode/
