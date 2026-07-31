@@ -4,11 +4,10 @@ A full-stack MERN application to securely store and manage website credentials. 
 
 ## Live Demo
 
-**Frontend:** https://YOUR-VERCEL-URL.vercel.app
+**Frontend:** https://stash-your-passwords.vercel.app/
 
 **Backend API:** https://stash-your-passwords-api.onrender.com
 
-> Replace `YOUR-VERCEL-URL` with your Vercel deployment URL.
 
 ---
 
@@ -140,7 +139,7 @@ MongoDB Atlas is used as the cloud database.
 
 ## Screenshots
 
-_Add screenshots of the application here._
+![alt text](image.png)
 
 ---
 
