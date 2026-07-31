@@ -1,12 +1,12 @@
+require('dotenv').config()
 const express = require('express');
 const cors=require('cors')
 const { MongoClient } = require('mongodb');
-const bodyparser=require('body-parser')
 // or as an es module:
 // import { MongoClient } from 'mongodb'
 
 // Connection URL
-const url = 'mongodb://localhost:27017';
+const url = process.env.MONGODB_URI;
 const client = new MongoClient(url);
 
 
@@ -19,7 +19,7 @@ app.use(cors())
 const port = 3000;
 client.connect();
 const db = client.db(dbName);
-require('dotenv').config()
+
 
 //get passwords
 app.get('/', async(req, res) => {
