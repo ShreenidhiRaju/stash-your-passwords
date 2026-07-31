@@ -1,6 +1,14 @@
 # Password Stash
 
-Password Stash is a full-stack password manager built using React, Express, and MongoDB. It allows users to securely store, update, and manage website credentials through a simple and responsive interface.
+A full-stack MERN application to securely store and manage website credentials. Users can add, edit, delete, and copy passwords through a clean and responsive interface.
+
+## Live Demo
+
+**Frontend:** https://YOUR-VERCEL-URL.vercel.app
+
+**Backend API:** https://stash-your-passwords-api.onrender.com
+
+> Replace `YOUR-VERCEL-URL` with your Vercel deployment URL.
 
 ---
 
@@ -8,40 +16,44 @@ Password Stash is a full-stack password manager built using React, Express, and 
 
 - Add new website credentials
 - Edit existing passwords
-- Delete saved passwords
-- Copy website URL, username, and password to clipboard
-- Show/Hide password while entering
-- Store data persistently using MongoDB
+- Delete stored passwords
+- Copy website, username, and password to clipboard
+- Show/Hide password functionality
+- Responsive UI for desktop and mobile devices
 - Toast notifications for user actions
-- Responsive UI built with Tailwind CSS
+- Cloud database using MongoDB Atlas
+- Fully deployed frontend and backend
 
 ---
 
 ## Tech Stack
 
 ### Frontend
-
 - React.js
+- Vite
 - Tailwind CSS
 - React Icons
+- Lucide React
 - React Toastify
-- UUID
 
 ### Backend
-
 - Node.js
 - Express.js
-- MongoDB
-- MongoDB Node Driver
-- CORS
-- dotenv
+
+### Database
+- MongoDB Atlas
+
+### Deployment
+- Frontend: Vercel
+- Backend: Render
+- Database: MongoDB Atlas
 
 ---
 
 ## Project Structure
 
 ```
-PASSWORD-MANAGER/
+Password Manager/
 │
 ├── BACKEND/
 │   ├── index.js
@@ -52,7 +64,7 @@ PASSWORD-MANAGER/
 │   ├── src/
 │   ├── public/
 │   ├── package.json
-│   └── vite.config.js
+│   └── .env
 │
 └── README.md
 ```
@@ -61,108 +73,99 @@ PASSWORD-MANAGER/
 
 ## Installation
 
-### Clone the repository
+### 1. Clone the repository
 
 ```bash
-git clone https://github.com/your-username/password-manager.git
+git clone https://github.com/ShreenidhiRaju/stash-your-passwords.git
+cd stash-your-passwords
 ```
 
-### Install dependencies
-
-#### Backend
+### 2. Backend Setup
 
 ```bash
 cd BACKEND
 npm install
 ```
 
-#### Frontend
-
-```bash
-cd FRONTEND
-npm install
-```
-
----
-
-## Environment Variables
-
-Create a `.env` file inside the `BACKEND` folder.
-
-Example:
+Create a `.env` file:
 
 ```env
-MONGODB_URI=mongodb://localhost:27017
+MONGODB_URI=your_mongodb_connection_string
 ```
 
-Ensure MongoDB is running locally before starting the backend.
-
----
-
-## Running the Project
-
-### Start the backend
+Run the backend:
 
 ```bash
-cd BACKEND
 node index.js
 ```
 
-The backend runs on:
+---
 
-```
-http://localhost:3000
-```
-
-### Start the frontend
+### 3. Frontend Setup
 
 ```bash
 cd FRONTEND
+npm install
+```
+
+Create a `.env` file:
+
+```env
+VITE_API_URL=http://localhost:3000
+```
+
+Run the frontend:
+
+```bash
 npm run dev
-```
-
-The frontend runs on:
-
-```
-http://localhost:5173
 ```
 
 ---
 
-## API Endpoints
+## Deployment
 
-| Method | Endpoint | Description |
-|--------|----------|-------------|
-| GET | `/` | Retrieve all saved passwords |
-| POST | `/` | Add a new password |
-| PUT | `/` | Update an existing password |
-| DELETE | `/` | Delete a password |
+### Frontend
+
+The frontend is deployed on **Vercel**.
+
+### Backend
+
+The Express backend is deployed on **Render**.
+
+### Database
+
+MongoDB Atlas is used as the cloud database.
 
 ---
 
 ## Screenshots
 
-You can add screenshots of the application here.
-
-```md
-![Home Page](screenshots/home.png)
-```
+_Add screenshots of the application here._
 
 ---
 
-## Future Improvements
+## Future Enhancements
 
-- Encrypt stored passwords
-- User authentication
-- Password strength indicator
-- Search and filter passwords
-- Categorize saved passwords
-- Deploy the application
+- User Authentication
+- Password Encryption
+- Password Strength Indicator
+- Search & Filter Functionality
+- Categories and Favorites
+- Dark/Light Theme Toggle
+- Export & Import Passwords
+
+---
+
+## Note
+
+This project is built for educational and portfolio purposes.
+
+Passwords are currently stored in plain text for demonstration. In a production application, sensitive information should be encrypted before storage.
 
 ---
 
 ## Author
 
-**Shreenidhi**
+**Shreenidhi Raju**
 
-GitHub: https://github.com/your-username
+GitHub: https://github.com/ShreenidhiRaju
