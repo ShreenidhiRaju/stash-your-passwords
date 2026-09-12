@@ -177,8 +177,8 @@ app.post("/auth/login", async (req, res) => {
 
         res.cookie("token", token, {
     httpOnly: true,
-    secure: false,
-    sameSite: "lax",
+    secure: true,
+    sameSite: "none",
     maxAge: 60 * 60 * 1000
 });
 
@@ -219,10 +219,10 @@ const authenticateToken = (req, res, next) => {
 app.post("/auth/logout", (req, res) => {
 
     res.clearCookie("token", {
-        httpOnly: true,
-        secure: false,
-        sameSite: "lax"
-    });
+    httpOnly: true,
+    secure: true,
+    sameSite: "none"
+});
 
     res.status(200).json({
         message: "Logged out successfully"
