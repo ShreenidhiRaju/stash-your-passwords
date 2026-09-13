@@ -6,7 +6,7 @@ The application implements JWT-based authentication using HttpOnly cookies, bcry
 
 ## Live Demo
 
-**Application:** https://stash-your-passwords.onrender.com/
+**Application:** https://stash-your-passwords-api.onrender.com
 
 ---
 
