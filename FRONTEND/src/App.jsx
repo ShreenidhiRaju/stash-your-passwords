@@ -15,8 +15,6 @@ const [checkingAuth, setCheckingAuth] = useState(true);
   const [form, setform] = useState({site:"",username:"",password:""})
   const [passwordarray, setpasswordarray] = useState([])
   const [search, setSearch] = useState("");
- 
-
   const toggleye = () => {
     setshowpassword(!showpassword);
 };
@@ -25,7 +23,7 @@ const [checkingAuth, setCheckingAuth] = useState(true);
   const getPassswords = async () => {
 
     const resp = await fetch(
-        `${import.meta.env.VITE_API_URL}/`,
+        `${import.meta.env.VITE_API_URL}/passwords`,
         {
             credentials: "include"
         }
@@ -55,7 +53,7 @@ const [checkingAuth, setCheckingAuth] = useState(true);
   if (form._id) {
 
     let resp = await fetch(
-        `${import.meta.env.VITE_API_URL}/`,
+        `${import.meta.env.VITE_API_URL}/passwords`,
         {
             method: "PUT",
             headers: {
@@ -86,7 +84,7 @@ else {
     const newpass = { ...form };
 
     let resp = await fetch(
-        `${import.meta.env.VITE_API_URL}/`,
+        `${import.meta.env.VITE_API_URL}/passwords`,
         {
             method: "POST",
             headers: {
@@ -120,7 +118,7 @@ else {
     }
 
     const resp = await fetch(
-        `${import.meta.env.VITE_API_URL}/`,
+        `${import.meta.env.VITE_API_URL}/passwords`,
         {
             method: "DELETE",
             headers: {
@@ -240,33 +238,7 @@ const generatePassword = () => {
 
 }, []);
 
-  useEffect(() => {
-
-    const checkAuth = async () => {
-
-        try {
-
-            const resp = await fetch(
-                `${import.meta.env.VITE_API_URL}/auth/me`,
-                {
-                    credentials: "include"
-                }
-            );
-
-            if (resp.ok) {
-                setIsLoggedIn(true);
-            }
-
-        } catch (error) {
-            console.error("Authentication check failed:", error);
-        } finally {
-            setCheckingAuth(false);
-        }
-    };
-
-    checkAuth();
-
-}, []);
+  
 
 useEffect(() => {
 

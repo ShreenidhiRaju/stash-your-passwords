@@ -1,4 +1,5 @@
 require('dotenv').config()
+const path = require("path");
 const crypto = require("crypto");
 const express = require('express');
 const cookieParser = require("cookie-parser");
@@ -24,7 +25,7 @@ app.use(cors({
 }));
 app.use(cookieParser());
 
-const port = 3000;
+const port = process.env.PORT || 3000;
 client.connect();
 const db = client.db(dbName);
 
@@ -87,7 +88,7 @@ const decryptPassword = (encryptedData) => {
 
     return decrypted;
 };
-app.post("/auth/register", async (req, res) => {
+app.post("/api/auth/register", async (req, res) => {
     try {
         const { email, password } = req.body;
 
@@ -128,7 +129,7 @@ app.post("/auth/register", async (req, res) => {
         });
     }
 });
-app.post("/auth/login", async (req, res) => {
+app.post("/api/auth/login", async (req, res) => {
     try {
         const { email, password } = req.body;
 
@@ -216,7 +217,7 @@ const authenticateToken = (req, res, next) => {
         next();
     });
 };
-app.post("/auth/logout", (req, res) => {
+app.post("/api/auth/logout", (req, res) => {
 
     res.clearCookie("token", {
     httpOnly: true,
@@ -228,14 +229,14 @@ app.post("/auth/logout", (req, res) => {
         message: "Logged out successfully"
     });
 });
-app.get("/auth/me", authenticateToken, (req, res) => {
+app.get("/api/auth/me", authenticateToken, (req, res) => {
     res.status(200).json({
         user: req.user
     });
 });
 
 //get passwords
-app.get('/', authenticateToken, async (req, res) => {
+app.get('/api/passwords', authenticateToken, async (req, res) => {
 
     const findResult = await collection.find({
         userId: req.user.userId
@@ -250,7 +251,7 @@ app.get('/', authenticateToken, async (req, res) => {
 });
 
 //delete passwords
-app.delete('/', authenticateToken, async (req, res) => {
+app.delete('/api/passwords', authenticateToken, async (req, res) => {
 
     const findResult = await collection.deleteOne({
         _id: new ObjectId(req.body.id),
@@ -267,7 +268,7 @@ app.delete('/', authenticateToken, async (req, res) => {
 });
 
 //insert passwords
-app.post('/', authenticateToken, async (req, res) => {
+app.post('/api/passwords', authenticateToken, async (req, res) => {
 
     const encryptedPassword = encryptPassword(req.body.password);
 
@@ -284,7 +285,7 @@ app.post('/', authenticateToken, async (req, res) => {
 });
 
 //update passwords
-app.put('/', authenticateToken, async (req, res) => {
+app.put('/api/passwords', authenticateToken, async (req, res) => {
 
     const encryptedPassword = encryptPassword(req.body.password);
 
@@ -311,6 +312,13 @@ app.put('/', authenticateToken, async (req, res) => {
     res.json({ success: true });
 });
 
+app.use(express.static(path.join(__dirname, "../FRONTEND/dist")));
+
+app.get("/{*splat}", (req, res) => {
+    res.sendFile(
+        path.join(__dirname, "../FRONTEND/dist/index.html")
+    );
+});
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`);
 });
