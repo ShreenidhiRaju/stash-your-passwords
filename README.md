@@ -1,27 +1,35 @@
 # Password Stash
 
-A full-stack MERN application to securely store and manage website credentials. Users can add, edit, delete, and copy passwords through a clean and responsive interface.
+A full-stack password manager built with React, Node.js, Express.js, and MongoDB. The application allows authenticated users to securely store and manage website credentials, with support for adding, editing, deleting, searching, and copying passwords.
+
+The application implements JWT-based authentication using HttpOnly cookies, bcrypt password hashing for user accounts, AES-256-GCM encryption for stored credentials, and user-specific authorization to prevent unauthorized access to stored data.
 
 ## Live Demo
 
-**Frontend:** https://stash-your-passwords.vercel.app/
+**Application:** https://stash-your-passwords.onrender.com/
 
-**Backend API:** https://stash-your-passwords-api.onrender.com
-
+**Database:** MongoDB Atlas
 
 ---
 
 ## Features
 
+- User registration and login
+- JWT-based authentication using HttpOnly cookies
+- User-specific authorization for stored credentials
+- Bcrypt hashing for user account passwords
+- AES-256-GCM encryption for stored website passwords
 - Add new website credentials
-- Edit existing passwords
-- Delete stored passwords
+- Edit existing credentials
+- Delete stored credentials
+- Search saved credentials
 - Copy website, username, and password to clipboard
 - Show/Hide password functionality
+- Secure password generation using the Web Crypto API
 - Responsive UI for desktop and mobile devices
 - Toast notifications for user actions
 - Cloud database using MongoDB Atlas
-- Fully deployed frontend and backend
+- Full-stack deployment with React and Express served from a single application
 
 ---
 
@@ -38,133 +46,25 @@ A full-stack MERN application to securely store and manage website credentials. 
 ### Backend
 - Node.js
 - Express.js
+- JSON Web Token (JWT)
+- bcrypt
+- cookie-parser
+- Node.js Crypto
 
 ### Database
 - MongoDB Atlas
 
+### Security
+- JWT Authentication
+- HttpOnly Cookies
+- bcrypt Password Hashing
+- AES-256-GCM Encryption
+- Per-user Authorization
+
 ### Deployment
-- Frontend: Vercel
-- Backend: Render
-- Database: MongoDB Atlas
+- Render
+- MongoDB Atlas
 
 ---
 
 ## Project Structure
-
-```
-Password Manager/
-│
-├── BACKEND/
-│   ├── index.js
-│   ├── package.json
-│   └── .env
-│
-├── FRONTEND/
-│   ├── src/
-│   ├── public/
-│   ├── package.json
-│   └── .env
-│
-└── README.md
-```
-
----
-
-## Installation
-
-### 1. Clone the repository
-
-```bash
-git clone https://github.com/ShreenidhiRaju/stash-your-passwords.git
-cd stash-your-passwords
-```
-
-### 2. Backend Setup
-
-```bash
-cd BACKEND
-npm install
-```
-
-Create a `.env` file:
-
-```env
-MONGODB_URI=your_mongodb_connection_string
-```
-
-Run the backend:
-
-```bash
-node index.js
-```
-
----
-
-### 3. Frontend Setup
-
-```bash
-cd FRONTEND
-npm install
-```
-
-Create a `.env` file:
-
-```env
-VITE_API_URL=http://localhost:3000
-```
-
-Run the frontend:
-
-```bash
-npm run dev
-```
-
----
-
-## Deployment
-
-### Frontend
-
-The frontend is deployed on **Vercel**.
-
-### Backend
-
-The Express backend is deployed on **Render**.
-
-### Database
-
-MongoDB Atlas is used as the cloud database.
-
----
-
-## Screenshots
-
-![alt text](image.png)
-
----
-
-## Future Enhancements
-
-- User Authentication
-- Password Encryption
-- Password Strength Indicator
-- Search & Filter Functionality
-- Categories and Favorites
-- Dark/Light Theme Toggle
-- Export & Import Passwords
-
----
-
-## Note
-
-This project is built for educational and portfolio purposes.
-
-Passwords are currently stored in plain text for demonstration. In a production application, sensitive information should be encrypted before storage.
-
----
-
-## Author
-
-**Shreenidhi Raju**
-
-GitHub: https://github.com/ShreenidhiRaju
