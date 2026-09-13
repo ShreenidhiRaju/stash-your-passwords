@@ -212,11 +212,6 @@ The React application is built using:
 
 Vite generates the production frontend inside the `FRONTEND/dist` directory. Express serves these generated files while handling API requests under the `/api` routes.
 
----
-
-## Screenshots
-
-![Password Stash](image.png)
 
 ---
 
