@@ -3,7 +3,6 @@ const path = require("path");
 const crypto = require("crypto");
 const express = require('express');
 const cookieParser = require("cookie-parser");
-const cors=require('cors');
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 const { MongoClient ,ObjectId} = require('mongodb');
@@ -19,10 +18,6 @@ const client = new MongoClient(url);
 const dbName = 'passop';
 const app = express();
 app.use(express.json())
-app.use(cors({
-    origin: "https://stash-your-passwords.vercel.app",
-    credentials: true
-}));
 app.use(cookieParser());
 
 const port = process.env.PORT || 3000;
@@ -179,7 +174,7 @@ app.post("/api/auth/login", async (req, res) => {
         res.cookie("token", token, {
     httpOnly: true,
     secure: true,
-    sameSite: "none",
+    sameSite: "lax",
     maxAge: 60 * 60 * 1000
 });
 
@@ -222,7 +217,7 @@ app.post("/api/auth/logout", (req, res) => {
     res.clearCookie("token", {
     httpOnly: true,
     secure: true,
-    sameSite: "none"
+    sameSite: "lax"
 });
 
     res.status(200).json({
